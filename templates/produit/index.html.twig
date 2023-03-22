@@ -3,7 +3,33 @@
 {% block title %}Produit index{% endblock %}
 
 {% block body %}
-    <h1>Produit index</h1>
+    <h1>Catalogue</h1>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for produit in produits %}
+
+            <div class="col">
+                <div class="card">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{ produit.titre }}</h5>
+                    <p class="card-text">{{ produit.description }}
+                    
+                    </p>
+                    <button type="button" class="btn btn-primary">Ajouter au panier</button>
+                    <a href="{{ path('app_detailproduit', {'id': produit.id}) }}">
+                      <button type="button" class="btn btn-primary">Detail</button>
+                    </a>
+                </div>
+                </div>
+            </div> 
+
+         {% endfor %}
+
+
+</div>
+
+
 
     <table class="table">
         <thead>
