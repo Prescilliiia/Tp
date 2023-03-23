@@ -24,6 +24,9 @@ class Produit
     #[ORM\OneToMany(mappedBy: 'produits', targetEntity: Commentaire::class)]
     private Collection $commentaires;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $Imagename = null;
+
     public function __construct()
     {
         $this->commentaires = new ArrayCollection();
@@ -89,6 +92,18 @@ class Produit
                 $commentaire->setProduits(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getImagename(): ?string
+    {
+        return $this->Imagename;
+    }
+
+    public function setImagename(?string $Imagename): self
+    {
+        $this->Imagename = $Imagename;
 
         return $this;
     }
